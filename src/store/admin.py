@@ -1,6 +1,6 @@
 from django.contrib import admin
 from . import models
-
+from django.contrib.auth.models import Group, User
 
 admin.site.site_header = "Ecommerce Admin Section"
 admin.site.index_title = "Welcome to Ecommerce admin area"
@@ -11,11 +11,15 @@ class ProductAdmin(admin.ModelAdmin):
     
 class OrderAdmin(admin.ModelAdmin):
      list_display = ("customer", "date_oredered", "complete", "cancel")
-     list_filter = ("customer", )
+     list_filter = ("date_oredered", )
      
      def cancelOrder(modelAdmin, request, queryset):
           queryset.update(is_cancel = 1)
      
+
+
+admin.site.unregister(Group)
+admin.site.unregister(User)
 
 admin.site.register(models.Customer)
 admin.site.register(models.Order, OrderAdmin)
