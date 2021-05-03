@@ -29,7 +29,7 @@ def checkout(request):
         items = order.orderitem_set.all()
         total_items = 0
         for item in items:
-            total_items += 1
+            total_items += 1 
     else:
         items = []
         order = {'get_cart_total': 00.00}
