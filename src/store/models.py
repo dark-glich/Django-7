@@ -14,9 +14,9 @@ class Product(models.Model):
     price = models.FloatField()
     stock = models.IntegerField()
     image = models.ImageField(null=True, blank=True)
-
-    def __str__(self):
-        return self.name
+    
+    class Meta:
+        ordering = ("name", "price", "stock")
 
     @property
     def ImageURL(self):
@@ -30,10 +30,17 @@ class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date_oredered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
+    cancel = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=200)
 
     def __str__(self):
         return str(self.id)
+    
+    def is_active(self):
+        if self.complete == true:
+            return True 
+        else:
+            return False
         
     @property
     def get_cart_total(self):
