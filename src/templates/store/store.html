@@ -8,7 +8,7 @@
     <img class="mySlides w3-animate-fading" src="{%static 'images/orange.jpg'%}" style="width:100vw" height="400vw">
     
 </div>
-  
+
 <script>
     var myIndex = 0;
     carousel();
@@ -24,7 +24,8 @@
       x[myIndex-1].style.display = "block";  
       setTimeout(carousel, 10000); 
     }
-    </script>
+</script>
+
 <div>
 {% for product in products %}
     <div class="card" style="width: 15rem; height: 23rem; margin-left: 0.5rem; border-radius: 10px; display: inline-table; margin-top: 1rem; margin-bottom: 1rem;" >
@@ -37,6 +38,7 @@
         </div>
     </div>
 {%endfor%}
+<script src="{% static 'javascript/main.js' %}"></script>
 </div>
 
 {% endblock content %}
