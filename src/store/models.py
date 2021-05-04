@@ -17,7 +17,10 @@ class Product(models.Model):
     
     class Meta:
         ordering = ("name", "price", "stock")
-
+    
+    def __str__(self):
+        return self.name 
+            
     @property
     def ImageURL(self):
         try:
@@ -34,7 +37,8 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.customer)
+    
     
     def is_active(self):
         if self.complete == true:
