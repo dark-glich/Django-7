@@ -1,11 +1,12 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="w3-content w3-display-container" style="margin-left: 0%;">
-    <img class="mySlides w3-animate-fading" src="{%static 'images/berry.jpg'%}" style="width:100vw" height="400vw">
-    <img class="mySlides w3-animate-fading" src="{%static 'images/strawberry.jpg'%}" style="width:100vw" height="400vw">
-    <img class="mySlides w3-animate-fading" src="{%static 'images/fruites.jpg'%}" style="width:100vw" height="400vw">
-    <img class="mySlides w3-animate-fading" src="{%static 'images/orange.jpg'%}" style="width:100vw" height="400vw">
+
+<div>
+    <img class="Slides" src="{%static 'images/berry.jpg'%}" height="400vw">
+    <img class="Slides" src="{%static 'images/strawberry.jpg'%}" height="400vw" >
+    <img class="Slides" src="{%static 'images/fruites.jpg'%}" height="400vw">
+    <img class="Slides" src="{%static 'images/orange.jpg'%}" height="400vw">
     
 </div>
 
@@ -15,20 +16,20 @@
     
     function carousel() {
       var i;
-      var x = document.getElementsByClassName("mySlides");
+      var x = document.getElementsByClassName("Slides");
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";  
       }
       myIndex++;
       if (myIndex > x.length) {myIndex = 1}    
-      x[myIndex-1].style.display = "block";  
-      setTimeout(carousel, 10000); 
+      x[myIndex-1].style.display = "block"; 
+      setTimeout(carousel, 5000); 
     }
 </script>
 
-<div>
+<div class="card-holder">
 {% for product in products %}
-    <div class="card" style="width: 15rem; height: 23rem; margin-left: 0.5rem; border-radius: 10px; display: inline-table; margin-top: 1rem; margin-bottom: 1rem;" >
+    <div class="card" >
         <img src="{{product.ImageURL}}" class="card-img-top" alt="..." height="220px" width="220px">
         <div class="card-body">
         <h4 class="card-title" style="text-align: center;">{{product.name}}</h4>
