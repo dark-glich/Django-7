@@ -28,5 +28,6 @@ for(let i = 0; i < updateBtn.length; i++){
     })
     .then((data) =>{
         console.log(data)
+        location.reload()
     })
 }

@@ -6,6 +6,8 @@ $accent: #53C286;
 	background-color: $primary;
 	display:flex;
 	position:fixed;
+	top:0;
+	left:0;
 	width:100vw;
 	height: 3rem;
 	color:white;
@@ -96,5 +98,61 @@ $accent: #53C286;
 		&:hover{
 			box-shadow: 4px 4px 6px rgb(206, 206, 206), -4px -4px 6px rgb(206, 206, 206);
 		}
+	}
+}
+
+.title-holder{
+	background-color:white;
+	margin-top: 4rem;
+	padding:1rem;
+	line-height: 40px;
+
+	#title{
+		font-size:2.5rem;
+		font-family:'Pacifico', cursive;
+		text-align: center;
+		margin-bottom:25px;
+		color:$primary;
+	}
+	#title-body{
+		width: 100%; 
+		display: flex; 
+		justify-content: space-around;
+
+		.specs{
+			display: inline-block; 
+			font-size: clamp(1.5vw, 1rem, 14px); 
+			color: rgb(61, 61, 61);
+		}
+		.checkout-btn{
+			border-radius: 5px;
+			text-decoration:none;
+			font-weight: 600;
+			font-family: 'Manrope', sans-serif;
+			padding:0px 4px;
+			color:white;
+			background-color:$accent;
+			transition:all 500ms ease ;
+
+		}
+	}
+	
+}
+
+.title-table{
+	background-color:white;
+	width:70%;
+	margin-left:15%;
+	margin-top: 2rem;
+	
+	.cart-row{
+		display:flex;
+		align-items: center;
+		justify-content:space-around;
+	}
+
+	.item-table{
+		display:flex;
+		align-items: center;
 	}
 }
