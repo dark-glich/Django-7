@@ -46,10 +46,8 @@ $accent: #53C286;
 		.search-bar{
 			width:80%;
 			outline:none;
-			border:none;
 			border-radius: 5px;
 			margin-right: 5px;
-			transition:border 500ms ease ;
 			color:rgb(59, 59, 59);
 			border:3px solid $secondary;
 	
@@ -61,6 +59,7 @@ $accent: #53C286;
 			outline:none;
 			border: none;
 			width:20%;
+			cursor: pointer;
 			border-radius: 5px;
 			font-weight: 600;
 	
@@ -86,17 +85,15 @@ $accent: #53C286;
 .card-holder{
 	display:flex;
 	flex-wrap: wrap;
-	justify-content:space-around;
+	justify-content:space-evenly;
 
 	.card{
-		width: 220px;
-		height: 23rem; 
 		margin: 1rem 0.25rem; 
-		background-color: white;
+		background-color: rgb(255, 255, 255);
 		transition:box-shadow 500ms ease-in;
 
 		&:hover{
-			box-shadow: 4px 4px 6px rgb(206, 206, 206), -4px -4px 6px rgb(206, 206, 206);
+			box-shadow: 6px 6px 6px rgb(206, 206, 206), -6px -6px 6px rgb(206, 206, 206);
 		}
 	}
 }
@@ -147,12 +144,124 @@ $accent: #53C286;
 	
 	.cart-row{
 		display:flex;
-		align-items: center;
 		justify-content:space-around;
 	}
 
 	.item-table{
 		display:flex;
 		align-items: center;
+
+		#total{
+			flex:1;
+			margin-left: 0%;
+			color:$primary;
+			font-weight: 600;
+		}
+	}
+}
+
+#checkout-title{
+	margin-top: 4rem;
+	background-color:white;
+	padding:1rem;
+	margin-left: 15%;
+	width: 70%;
+	text-align: center;
+	font-size:3rem;
+
+	#title{
+		font-size: 3rem; 
+		font-family:'Pacifico', cursive; 
+		color:$primary;
+	}
+}
+.checkout-container{
+	display:grid;
+	grid-template-columns: 60% 40%;
+	margin:50px;
+	font-family: 'Manrope', sans-serif;
+
+	.checkout-order{
+		padding:1rem;
+		background-color:white;
+		
+		#summary-title{
+			text-align: center;
+			color:$primary;
+			font-weight:600;
+			font-size: 1.5rem;
+		}
+		.cart-row{
+			display:flex;
+		}
+		.item-row{
+			display:flex;
+			align-items: center;
+
+			#total{
+				flex:1;
+				margin-left: 0%;
+				color:$primary;
+				font-weight: 600;
+			}
+		}
+	}
+	#peronal-form{
+		padding:1rem;
+		background-color:white;
+		margin-right:3rem;
+		height:max-content;
+
+		#personal-info{
+			text-align: center;
+			color:$primary;
+			font-weight:600;
+			font-size: 1.5rem;
+		}
+		.form-item{
+			outline:none;
+			border-radius: 5px;
+			margin: 10px 5px;
+			color:rgb(59, 59, 59);
+			border:1.5px solid $primary;
+			margin-bottom: 0.5rem;
+			width:45%;
+			height:35px;
+			transition:all 500ms ease;
+
+			&:focus{
+				border:3px solid $primary;
+			}
+		}
+
+		.continue-btn{
+			border-radius: 5px;
+			text-decoration:none;
+			font-weight: 600;
+			font-family: 'Manrope', sans-serif;
+			padding:7px 6px;
+			outline:none;
+			border:none;
+			color:white;
+			background-color:$accent;
+			transition:all 500ms ease ;
+			cursor:pointer;
+		}
+	}
+
+	#payment-field{
+		padding:1rem;
+		background-color:white;
+		margin-right:3rem;
+		margin-top:1rem;
+		height:max-content;
+		display:none;
+
+		.payment-title{
+			text-align: center;
+			color:$primary;
+			font-weight:600;
+			font-size: 1.5rem;
+		}
 	}
 }

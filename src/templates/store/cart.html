@@ -16,10 +16,10 @@
 
     <div class="title-table">
         <div class="cart-row">
-            <div style="flex:2; text-align: center;"><strong>Item</strong></div>
-            <div style="flex:1"><strong>Price</strong></div>
-            <div style="flex:1"><strong>Quantity</strong></div>
-            <div style="flex:1"><strong>Total</strong></div>
+            <div style="flex:2; text-align: center; margin-top:15px;"><strong>Item</strong></div>
+            <div style="flex:1; margin-top:15px;"><strong>Price</strong></div>
+            <div style="flex:1; margin-top:15px;"><strong>Quantity</strong></div>
+            <div style="flex:1; margin-top:15px;"><strong>Total</strong></div>
         </div>
         <hr>
         {% for item in items %}
@@ -28,7 +28,7 @@
             <div style="flex:1"><p>{{item.product.name}}</p></div>
             <div style="flex:1"><p>₹{{item.product.price}}</p></div>
             <div style="flex:1"><p style="margin-left: 20%;">{{item.quantity}}</p></div>
-            <div style="flex:1; margin-left: 0%;"><p>₹{{item.get_total}}</p></div>
+            <div id="total"><p>₹{{item.get_total}}</p></div>
         </div>
         <hr>
         {% endfor %}

@@ -30,6 +30,7 @@ def checkout(request):
         customer = request.user.customer
         order, complete = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        
         total_items = 0
         for item in items:
             total_items += 1 

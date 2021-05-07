@@ -52,11 +52,8 @@
 .navbar .form .search-bar {
   width: 80%;
   outline: none;
-  border: none;
   border-radius: 5px;
   margin-right: 5px;
-  -webkit-transition: border 500ms ease;
-  transition: border 500ms ease;
   color: #3b3b3b;
   border: 3px solid #F7E382;
 }
@@ -67,6 +64,7 @@
   outline: none;
   border: none;
   width: 20%;
+  cursor: pointer;
   border-radius: 5px;
   font-weight: 600;
 }
@@ -93,13 +91,12 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .card-holder .card {
-  width: 220px;
-  height: 23rem;
   margin: 1rem 0.25rem;
   background-color: white;
   -webkit-transition: -webkit-box-shadow 500ms ease-in;
@@ -109,8 +106,8 @@
 }
 
 .card-holder .card:hover {
-  -webkit-box-shadow: 4px 4px 6px #cecece, -4px -4px 6px #cecece;
-          box-shadow: 4px 4px 6px #cecece, -4px -4px 6px #cecece;
+  -webkit-box-shadow: 6px 6px 6px #cecece, -6px -6px 6px #cecece;
+          box-shadow: 6px 6px 6px #cecece, -6px -6px 6px #cecece;
 }
 
 .title-holder {
@@ -166,9 +163,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -180,5 +174,141 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.title-table .item-table #total {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 0%;
+  color: #386C5F;
+  font-weight: 600;
+}
+
+#checkout-title {
+  margin-top: 4rem;
+  background-color: white;
+  padding: 1rem;
+  margin-left: 15%;
+  width: 70%;
+  text-align: center;
+  font-size: 3rem;
+}
+
+#checkout-title #title {
+  font-size: 3rem;
+  font-family: 'Pacifico', cursive;
+  color: #386C5F;
+}
+
+.checkout-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60% 40%;
+      grid-template-columns: 60% 40%;
+  margin: 50px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.checkout-container .checkout-order {
+  padding: 1rem;
+  background-color: white;
+}
+
+.checkout-container .checkout-order #summary-title {
+  text-align: center;
+  color: #386C5F;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.checkout-container .checkout-order .cart-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checkout-container .checkout-order .item-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkout-container .checkout-order .item-row #total {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 0%;
+  color: #386C5F;
+  font-weight: 600;
+}
+
+.checkout-container #peronal-form {
+  padding: 1rem;
+  background-color: white;
+  margin-right: 3rem;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.checkout-container #peronal-form #personal-info {
+  text-align: center;
+  color: #386C5F;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.checkout-container #peronal-form .form-item {
+  outline: none;
+  border-radius: 5px;
+  margin: 10px 5px;
+  color: #3b3b3b;
+  border: 1.5px solid #386C5F;
+  margin-bottom: 0.5rem;
+  width: 45%;
+  height: 35px;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.checkout-container #peronal-form .form-item:focus {
+  border: 3px solid #386C5F;
+}
+
+.checkout-container #peronal-form .continue-btn {
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  padding: 7px 6px;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #53C286;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  cursor: pointer;
+}
+
+.checkout-container #payment-field {
+  padding: 1rem;
+  background-color: white;
+  margin-right: 3rem;
+  margin-top: 1rem;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  display: none;
+}
+
+.checkout-container #payment-field .payment-title {
+  text-align: center;
+  color: #386C5F;
+  font-weight: 600;
+  font-size: 1.5rem;
 }
 /*# sourceMappingURL=main.css.map */
