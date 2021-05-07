@@ -17,14 +17,14 @@
             <div id="user-info">
                 <h3 id="personal-info"> Personal Info</h3>
                 <hr>
-                <div class="form-field">
+                <div class="form-field" id="personal-form">
                     <input required class="form-item" type="text" name="name" placeholder="Name..">
                     <input required class="form-item" type="email" name="email" placeholder="Email..">
                 </div>
+                <hr>
             </div>
             
             <div id="shipping-info" style="margin-top: 30px;">
-                <hr>
                 <h3 id="personal-info">Shipping Information:</h3>
                 <div class="form-field">
                     <input required class="form-item" style="width:92%;" type="text" name="address" placeholder="Address..">
@@ -39,6 +39,7 @@
         </form>
         <div id='payment-field' class="payment">
             <h3 class='payment-title'>Payment Options</h3>
+            <button id="payment-btn" class="continue-btn"> Make Payment </button>
         </div>
     </div>
 
@@ -62,18 +63,64 @@
                     <div id="total"><p>₹{{item.get_total}}</p></div>
                 </div>
                 <hr>
+                {% endfor %}
 
                 <script>
+                    if (user != 'AnonymousUser'){
+                        document.getElementById('user-info').innerHTML = ''
+                    }
                     const form = document.getElementById('form');
+                    let payment_field = document.getElementById('payment-field');
+                    let btn = document.getElementById('form-button');
                     form.addEventListener('submit', function(e){
                         e.preventDefault();
-                        let btn = document.getElementById('form-button');
                         btn.style.display = 'none';
-                        let payment_field = document.getElementById('payment-field');
                         payment_field.style.display = 'block'
+
                     });
+                    const payment_btn = document.getElementById('payment-btn');
+                    payment_btn.addEventListener('click', function(){
+                        SubmitData()
+                    })
+
+                    function SubmitData(){
+                        console.log("Payment Made")
+
+                        let UserInfo = {
+                            'name': null,
+                            'email': null,
+                            'total': '{{order.get_cart_total|floatformat:2}}'
+                        }
+                        let ShippingInfo = {
+                            'address': form.address.value,
+                            'city': form.city.value, 
+                            'state': form.state.value,
+                            'zipcode': form.zipcode.value
+                        }
+
+                        if(user == 'AnonymousUser'){
+                            UserInfo.name = form.name.value
+                            UserInfo.email = form.email.value
+                        }
+                        
+                        const payment_url = '/proccess_order/'
+                        fetch(payment_url, {
+                            method: "POST",
+                            'headers': {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': csrftoken},
+                            'body': JSON.stringify({'form': UserInfo, 'shippingInfo': ShippingInfo})
+                            }
+                        ).then((response) =>{
+                            return response.json()})
+                        .then((data) => {
+                            alert('Transaction Completed')
+                            window.location.href="{%url 'store'%}"
+                        })
+
+                    }
+
                 </script>
-                {% endfor %}
 
             {% else %}
                 <script>

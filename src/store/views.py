@@ -30,7 +30,6 @@ def checkout(request):
         customer = request.user.customer
         order, complete = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
-        
         total_items = 0
         for item in items:
             total_items += 1 
@@ -53,7 +52,6 @@ def UpdateItem(request):
     orderitem, created = OrderItem.objects.get_or_create(product=product, order=order)
     
     if action == 'add':
-        print("kfbvjbt")
         orderitem.quantity = (orderitem.quantity + 1)
     elif action == 'remove':
         orderitem.quantity = (orderitem.quantity - 1)
@@ -64,3 +62,9 @@ def UpdateItem(request):
         orderitem.delete()
 
     return JsonResponse('Item Added', safe=False)
+
+def ProcessOrder(request):
+    data = json.loads(request.body.decode("utf-8"))
+    print(data['shippingInfo'])
+    return JsonResponse('Item Added', safe=False)
+    
