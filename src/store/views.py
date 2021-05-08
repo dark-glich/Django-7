@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
+import datetime
 import json
 
 def store(request):
@@ -64,7 +65,28 @@ def UpdateItem(request):
     return JsonResponse('Item Added', safe=False)
 
 def ProcessOrder(request):
+    transaction_id = datetime.datetime.now().timestamp()
+    print(transaction_id)
     data = json.loads(request.body.decode("utf-8"))
-    print(data['shippingInfo'])
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, complete = Order.objects.get_or_create(customer=customer, complete=False)
+        total = float(data['form']['total'])
+        order.transaction_id = transaction_id
+        if total == order.get_cart_total:
+            order.complete = True
+        order.save()
+        
+        ShippingAdress.objects.create(
+            customer=customer, 
+            order=order,
+            adrress= data['shippingInfo']['address'],
+            city= data['shippingInfo']['city'],
+            state= data['shippingInfo']['state'],
+            zipcode= data['shippingInfo']['zipcode'],
+        )
+        
+    
+    
     return JsonResponse('Item Added', safe=False)
     
