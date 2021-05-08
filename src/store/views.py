@@ -6,8 +6,9 @@ import json
 from .utils import CookieCart, cartData, GuestOrder
 
 def store(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-date_added')
     context = {'products': products}
+    
     
     return render(request, 'store/store.html', context)
 

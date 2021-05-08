@@ -1,5 +1,5 @@
-let updateBtn = document.getElementsByClassName("update-button")
-
+let updateBtn = document.getElementsByClassName("update-button");
+let cart_msg = document.getElementsByClassName("cart-msg");
 for(let i = 0; i < updateBtn.length; i++){
     updateBtn[i].addEventListener('click', function(){
         let productId = this.dataset.product
@@ -10,6 +10,12 @@ for(let i = 0; i < updateBtn.length; i++){
         }else{
             Posttoken(productId, action)
         }
+        cart_msg[i].style.display = 'block'
+        setTimeout(function(){
+            cart_msg[i].style.display = 'none'
+            location.reload()
+        }, 5000)
+       
     })
 
 }
@@ -32,7 +38,6 @@ function addCookieItem(productId, action){
         }
     }
     document.cookie = `FruitStore=${JSON.stringify(cart)} ;domain=;path=/`
-    location.reload()
 }
 
 function Posttoken(productId, action) {
@@ -51,6 +56,5 @@ function Posttoken(productId, action) {
     })
     .then((data) =>{
         console.log(data)
-        location.reload()
     })
 }

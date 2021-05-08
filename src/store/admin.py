@@ -7,7 +7,7 @@ admin.site.index_title = "Welcome to Ecommerce admin area"
 
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = (('name', 'price'), 'stock')
+    fields = (('name', 'price'), 'stock', 'image')
     list_editable = ['price', 'stock']
     list_display = ("name", "price", "stock")
     

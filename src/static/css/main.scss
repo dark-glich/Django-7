@@ -84,7 +84,7 @@ $accent: #53C286;
 	width:100vw;
 	height: 200px;
 	margin-top: 20vh;
-	z-index: 2;
+	z-index: 1;
 
 	#back-btn{
 		background-color: #458071;
@@ -125,6 +125,7 @@ $accent: #53C286;
 		height:max-content;
 		padding-bottom: 1.5rem;
 		margin: 1rem 0.25rem; 
+		cursor: pointer;
 		background-color: rgb(255, 255, 255);
 		transition:box-shadow 500ms ease-in;
 
@@ -158,21 +159,38 @@ $accent: #53C286;
 
 			.add-to-cart-btn{
 				background:  white;
-				border:2px solid rgb(97, 97, 97);
-				color:rgb(97, 97, 97);
+				border:2px solid rgb(114, 113, 113);
+				color:rgb(114, 113, 113);
 				border-radius: 10px;
 				text-decoration: none;
 				padding:5px 5px;
 				transition: all 500ms ease;
 
 				&:hover{
-					background:  rgb(97, 97, 97);
-					border:2px solid rgb(97, 97, 97);
+					background:rgb(114, 113, 113);
+					border:2px solid rgb(114, 113, 113);
 					color:white;
 				}
 			}
+		}	
+	}
+
+	.cart-msg{
+		background-color: rgb(114, 113, 113);
+		padding: 8px 12px;
+		padding-top: 2px;
+		border-radius: 10px;
+		position:fixed;
+		bottom: 1rem;
+		right: 1rem;
+		z-index:2;
+		color:white;
+		display:none;
+
+		.material-icons{
+			position:relative;
+			top:5px;
 		}
-		
 	}
 }
 

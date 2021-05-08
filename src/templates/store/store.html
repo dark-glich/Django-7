@@ -29,7 +29,7 @@
 
 <div class="card-holder">
 {% for product in products %}
-    <div class="card" >
+    <div class="card" id="myBtn">
         <img src="{{product.ImageURL}}" class="card-img-top" alt="..." style="margin:5px;" height="210px" width="210px">
         <div class="card-body">
           <h4 id="title" style="text-align: center;">{{product.name}}</h4>
@@ -41,16 +41,24 @@
           </div>
         </div>
     </div>
+    <div class='cart-msg'>
+      <i class="material-icons">info</i>
+      <span id="msg-text">{{product.name}} Added to Cart</span>
+    </div>
 {%endfor%}
+
+<!--Footer-->
 <div class=footer>
   <div id="back-btn">Back To Top</div>
 </div>
+
 <script>
-  let btn = document.getElementById('back-btn')
-  btn.onclick = function() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+  // Scroll Up Btn
+    let btn = document.getElementById('back-btn')
+    btn.onclick = function() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
 </script>
 <script src="{% static 'javascript/main.js' %}"></script>
 </div>

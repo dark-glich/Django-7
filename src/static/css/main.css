@@ -86,7 +86,7 @@
   width: 100vw;
   height: 200px;
   margin-top: 20vh;
-  z-index: 2;
+  z-index: 1;
 }
 
 .footer #back-btn {
@@ -144,6 +144,7 @@
   height: max-content;
   padding-bottom: 1.5rem;
   margin: 1rem 0.25rem;
+  cursor: pointer;
   background-color: white;
   -webkit-transition: -webkit-box-shadow 500ms ease-in;
   transition: -webkit-box-shadow 500ms ease-in;
@@ -189,8 +190,8 @@
 
 .card-holder .card .btn-holder .add-to-cart-btn {
   background: white;
-  border: 2px solid #616161;
-  color: #616161;
+  border: 2px solid #727171;
+  color: #727171;
   border-radius: 10px;
   text-decoration: none;
   padding: 5px 5px;
@@ -199,9 +200,27 @@
 }
 
 .card-holder .card .btn-holder .add-to-cart-btn:hover {
-  background: #616161;
-  border: 2px solid #616161;
+  background: #727171;
+  border: 2px solid #727171;
   color: white;
+}
+
+.card-holder .cart-msg {
+  background-color: #727171;
+  padding: 8px 12px;
+  padding-top: 2px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 2;
+  color: white;
+  display: none;
+}
+
+.card-holder .cart-msg .material-icons {
+  position: relative;
+  top: 5px;
 }
 
 .title-holder {

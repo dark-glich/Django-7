@@ -5,6 +5,7 @@ class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=256)
+    
 
     def __str__(self):
         return self.name
@@ -14,6 +15,7 @@ class Product(models.Model):
     price = models.FloatField()
     stock = models.IntegerField()
     image = models.ImageField(null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True, null=True) 
     
     class Meta:
         ordering = ("name", "price", "stock")
