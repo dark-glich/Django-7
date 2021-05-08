@@ -79,15 +79,51 @@ $accent: #53C286;
 	
 }
 
+.footer{
+	background-color:$primary;
+	width:100vw;
+	height: 200px;
+	margin-top: 20vh;
+	z-index: 2;
+
+	#back-btn{
+		background-color: #458071;
+		width:100vw;
+		padding:8px 0px;
+		position:absolute;
+		text-align: center;
+		color:white;
+		font-size:1rem;
+		cursor:pointer;
+	}
+}
+
 .Slides{
 	width:100vw;
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
 }
+@-webkit-keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
+@keyframes fade {
+	from {opacity: .4} 
+	to {opacity: 1}
+}
+
 .card-holder{
 	display:flex;
 	flex-wrap: wrap;
 	justify-content:space-evenly;
 
 	.card{
+		width: 220px;
+		height:max-content;
+		padding-bottom: 1.5rem;
 		margin: 1rem 0.25rem; 
 		background-color: rgb(255, 255, 255);
 		transition:box-shadow 500ms ease-in;
@@ -95,6 +131,48 @@ $accent: #53C286;
 		&:hover{
 			box-shadow: 6px 6px 6px rgb(206, 206, 206), -6px -6px 6px rgb(206, 206, 206);
 		}
+
+		#title{
+			font-size:1.5rem;
+			text-align: center;
+			margin-bottom:25px;
+			color:$primary;
+		}
+		#price{
+			margin-left: 14px;
+			font-weight:600;
+			color:rgb(65, 65, 65);
+		}
+		.btn-holder{
+			display:flex;
+			justify-content:space-evenly;
+
+			.buy-btn{
+				background: $accent;
+				color:white;
+				border-radius: 10px;
+				text-decoration: none;
+				border:2px solid $accent;
+				padding:5px 5px;
+			}
+
+			.add-to-cart-btn{
+				background:  white;
+				border:2px solid rgb(97, 97, 97);
+				color:rgb(97, 97, 97);
+				border-radius: 10px;
+				text-decoration: none;
+				padding:5px 5px;
+				transition: all 500ms ease;
+
+				&:hover{
+					background:  rgb(97, 97, 97);
+					border:2px solid rgb(97, 97, 97);
+					color:white;
+				}
+			}
+		}
+		
 	}
 }
 

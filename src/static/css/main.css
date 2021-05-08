@@ -81,8 +81,49 @@
   color: #F7E382;
 }
 
+.footer {
+  background-color: #386C5F;
+  width: 100vw;
+  height: 200px;
+  margin-top: 20vh;
+  z-index: 2;
+}
+
+.footer #back-btn {
+  background-color: #458071;
+  width: 100vw;
+  padding: 8px 0px;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .Slides {
   width: 100vw;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .card-holder {
@@ -97,6 +138,11 @@
 }
 
 .card-holder .card {
+  width: 220px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding-bottom: 1.5rem;
   margin: 1rem 0.25rem;
   background-color: white;
   -webkit-transition: -webkit-box-shadow 500ms ease-in;
@@ -108,6 +154,54 @@
 .card-holder .card:hover {
   -webkit-box-shadow: 6px 6px 6px #cecece, -6px -6px 6px #cecece;
           box-shadow: 6px 6px 6px #cecece, -6px -6px 6px #cecece;
+}
+
+.card-holder .card #title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #386C5F;
+}
+
+.card-holder .card #price {
+  margin-left: 14px;
+  font-weight: 600;
+  color: #414141;
+}
+
+.card-holder .card .btn-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.card-holder .card .btn-holder .buy-btn {
+  background: #53C286;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 2px solid #53C286;
+  padding: 5px 5px;
+}
+
+.card-holder .card .btn-holder .add-to-cart-btn {
+  background: white;
+  border: 2px solid #616161;
+  color: #616161;
+  border-radius: 10px;
+  text-decoration: none;
+  padding: 5px 5px;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.card-holder .card .btn-holder .add-to-cart-btn:hover {
+  background: #616161;
+  border: 2px solid #616161;
+  color: white;
 }
 
 .title-holder {
@@ -310,5 +404,18 @@
   color: #386C5F;
   font-weight: 600;
   font-size: 1.5rem;
+}
+
+/*Paypal Styling*/
+@media screen and (max-width: 400px) {
+  #paypal-button-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  #paypal-button-container {
+    width: 250px;
+  }
 }
 /*# sourceMappingURL=main.css.map */

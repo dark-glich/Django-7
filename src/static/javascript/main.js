@@ -32,6 +32,7 @@ function addCookieItem(productId, action){
         }
     }
     document.cookie = `FruitStore=${JSON.stringify(cart)} ;domain=;path=/`
+    location.reload()
 }
 
 function Posttoken(productId, action) {
