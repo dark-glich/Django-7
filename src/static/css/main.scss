@@ -265,3 +265,15 @@ $accent: #53C286;
 		}
 	}
 }
+
+/*Paypal Styling*/
+@media screen and (max-width: 400px) {
+	#paypal-button-container {
+		width: 100%;
+	}
+}
+@media screen and (min-width: 400px) {
+	#paypal-button-container {
+		width: 250px;
+	}
+}

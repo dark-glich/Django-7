@@ -39,7 +39,8 @@
         </form>
         <div id='payment-field' class="payment">
             <h3 class='payment-title'>Payment Options</h3>
-            <button id="payment-btn" class="continue-btn"> Make Payment </button>
+            <div id="paypal-button-container"></div>
+            <!--<button id="payment-btn" class="continue-btn"> Make Payment </button>-->
         </div>
     </div>
 
@@ -64,7 +65,37 @@
                 </div>
                 <hr>
                 {% endfor %}
+                
+                <!-- PayPal Script -->
+                <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
 
+                <script>
+                let total = "{{order.get_cart_total}}"
+                total *= 0.014 
+                paypal.Buttons({
+                        // Set up the transaction
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: parseFloat(total).toFixed(2)
+                                    }
+                                }]
+                            });
+                        },
+
+                    // Finalize the transaction
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            // Show a success message to the buyer
+                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                            SubmitData()
+                        })
+                    }
+                }).render('#paypal-button-container');
+                </script>
+
+                <!-- My Script -->
                 <script>
                     if (user != 'AnonymousUser'){
                         document.getElementById('user-info').innerHTML = ''
@@ -78,10 +109,10 @@
                         payment_field.style.display = 'block'
 
                     });
-                    const payment_btn = document.getElementById('payment-btn');
+                    /*const payment_btn = document.getElementById('payment-btn');
                     payment_btn.addEventListener('click', function(){
                         SubmitData()
-                    })
+                    })*/
 
                     function SubmitData(){
                         console.log("Payment Made")
@@ -89,7 +120,7 @@
                         let UserInfo = {
                             'name': null,
                             'email': null,
-                            'total': '{{order.get_cart_total}}'
+                            'get_total': '{{order.get_cart_total}}'
                         }
                         let ShippingInfo = {
                             'address': form.address.value,
@@ -114,7 +145,8 @@
                         ).then((response) =>{
                             return response.json()})
                         .then((data) => {
-                            alert('Transaction Completed')
+                            cart = {};
+                            document.cookie = `FruitStore=${JSON.stringify(cart)} ;domain=;path=/`
                             window.location.href="{%url 'store'%}"
                         })
 
