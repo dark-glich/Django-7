@@ -19,9 +19,32 @@ def cart(request):
         for item in items:
             total_items += 1
     else:
+        try:
+            cart = json.loads(request.COOKIES['FruitStore'])
+        except:
+            cart = {}
+        
         items = []
-        order = {'get_cart_total': 00.00}
-        total_items = 0 
+        order = {'get_cart_total': 00.00, 'get_cart_item': 0, 'shipping':False}
+        total_items = order['get_cart_item']
+        
+        for i in cart:
+            product = Product.objects.get(id=i)
+            total = (product.price * cart[i]['q'])
+            order['get_cart_total'] += total 
+            total_items += cart[i]['q']
+            
+            item = {
+                'product':{
+                    'id': product.id,
+                    'name': product.name,
+                    'price':product.price,
+                    'ImageURL': product.ImageURL
+                },
+                'quantity': cart[i]['q'],
+                'get_total': total
+            }
+            items.append(item)
 
     context = {'items':items, 'order': order, 'total_items':total_items}
     return render(request, 'store/cart.html', context)
@@ -53,9 +76,9 @@ def UpdateItem(request):
     orderitem, created = OrderItem.objects.get_or_create(product=product, order=order)
     
     if action == 'add':
-        orderitem.quantity = (orderitem.quantity + 1)
+        orderitem.quantity += 1
     elif action == 'remove':
-        orderitem.quantity = (orderitem.quantity - 1)
+        orderitem.quantity -= 1
     
     orderitem.save()
     

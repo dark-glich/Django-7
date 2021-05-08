@@ -6,13 +6,35 @@ for(let i = 0; i < updateBtn.length; i++){
         let action = this.dataset.action
         console.log(productId, action)
         if (user == 'AnonymousUser'){
-            console.log('Not Authenticared User')
+            addCookieItem(productId, action)
         }else{
             Posttoken(productId, action)
         }
     })
 
-}function Posttoken(productId, action) {
+}
+
+function addCookieItem(productId, action){
+    console.log('Unauthenticated User');
+    if (action == 'add'){
+        if (cart[productId] == undefined){
+            cart[productId] = {'q':1}
+        }else{
+            cart[productId]['q'] += 1
+        }
+    }
+
+    if (action == 'remove'){
+        cart[productId]['q'] -= 1
+
+        if(cart[productId]['q'] <= 0){
+            delete cart[productId]['q']
+        }
+    }
+    document.cookie = `FruitStore=${JSON.stringify(cart)} ;domain=;path=/`
+}
+
+function Posttoken(productId, action) {
     console.log(`Authenticared User : ${user}`)
     let url = '/update_item/'
     fetch(url,{
