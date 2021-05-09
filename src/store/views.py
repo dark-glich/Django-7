@@ -1,15 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.http import JsonResponse
 import datetime
 import json
 from .utils import CookieCart, cartData, GuestOrder
+from .form import search_bar
+
 
 def store(request):
     products = Product.objects.all().order_by('-date_added')
-    context = {'products': products}
-    
-    
+    form = search_bar(request.POST or None)
+    if form.is_valid():
+        query = form.cleaned_data['name'].capitalize()
+        products = Product.objects.all().filter(name__contains=query)
+        form = search_bar()
+        
+    context = {'form': form , 'products': products}
     return render(request, 'store/store.html', context)
 
 def cart(request):
@@ -17,6 +23,7 @@ def cart(request):
     items = data['items']
     order = data['order']
     total_items = data['total_items']
+    
 
     context = {'items':items, 'order': order, 'total_items':total_items}
     return render(request, 'store/cart.html', context)

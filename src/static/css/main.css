@@ -5,6 +5,7 @@
   display: flex;
   position: fixed;
   top: 0;
+  z-index: 4;
   left: 0;
   width: 100vw;
   height: 3rem;
@@ -63,7 +64,7 @@
   background-color: #F7E382;
   outline: none;
   border: none;
-  width: 20%;
+  padding: 4px 6px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: 600;

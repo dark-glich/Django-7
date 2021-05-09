@@ -40,7 +40,7 @@
         <div id='payment-field' class="payment">
             <h3 class='payment-title'>Payment Options</h3>
             <div id="paypal-button-container"></div>
-            <!--<button id="payment-btn" class="continue-btn"> Make Payment </button>-->
+            
         </div>
     </div>
 
@@ -73,6 +73,14 @@
                 let total = "{{order.get_cart_total}}"
                 total *= 0.014 
                 paypal.Buttons({
+
+                    style: {
+                        color:  'blue',
+                        shape:  'pill',
+                        label:  'pay',
+                        height: 40,
+                        InnerWidth: 100
+                    },
                         // Set up the transaction
                     createOrder: function(data, actions) {
                         return actions.order.create({

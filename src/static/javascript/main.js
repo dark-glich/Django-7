@@ -1,5 +1,6 @@
 let updateBtn = document.getElementsByClassName("update-button");
 let cart_msg = document.getElementsByClassName("cart-msg");
+
 for(let i = 0; i < updateBtn.length; i++){
     updateBtn[i].addEventListener('click', function(){
         let productId = this.dataset.product

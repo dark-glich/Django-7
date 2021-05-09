@@ -53,15 +53,22 @@
 </head>
 
 <body style="background-color:rgb(240, 240, 240);">
-  <nav class="navbar">
-    <a class="brand-name" href="{%url 'store'%}">Fruit Store</a>
-    <form class='form'>
-      <input class="search-bar" type="search" placeholder="">
-      <button class="search-btn" type="submit">Search</button>
-    </form>
-    <a class="login" href="#">Login</a>
-    <a href="{%url 'cart'%}" id="cart"><i class="fa fa-shopping-cart" id="cart-icon"></i></a>
-  </nav>
+  <div>
+    <nav class="navbar">
+      <a class="brand-name" href="{%url 'store'%}">Fruit Store</a>
+      {% if form %}
+      <form class='form' method="POST">{%csrf_token%}
+        {{form.name}}
+        <button class="search-btn" href="home" type="submit">Search</button>
+      </form>
+      {%else%}
+      <div style="width: 42vw;"></div>
+      
+      {% endif %}
+      <a class="login" href="#">Login</a>
+      <a href="{%url 'cart'%}" id="cart"><i class="fa fa-shopping-cart" id="cart-icon"></i></a>
+    </nav>
+</div>
 
   {% block content %}
   
